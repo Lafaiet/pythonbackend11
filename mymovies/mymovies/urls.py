@@ -20,8 +20,8 @@ from viewer.views import (
     luck_number,
     favorite_pet,
     pet_names,
-    movies_list,
     home_page,
+    MoviesList
 )
 
 
@@ -32,5 +32,5 @@ urlpatterns = [
     path('luck/', luck_number),
     path('pet/', favorite_pet),
     path('pet_names/<pet_type>', pet_names),
-    path('movies/', movies_list),
+    path('movies/', MoviesList.as_view(), name='movies_list'),
 ]

@@ -22,7 +22,7 @@
             <a class="nav-item nav-link active" href="{% url 'home' %}">
               Home
             </a>
-            <a class="nav-item nav-link active" href="/movies">
+            <a class="nav-item nav-link active" href="{% url 'movies_list' %}">
               Movies
             </a>
             <a class="nav-item nav-link active" href="/contact">
@@ -38,7 +38,6 @@
           {% block content %}
 
           {% endblock %}
-
 
       </div>
     </div>

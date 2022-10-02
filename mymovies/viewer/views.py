@@ -1,7 +1,8 @@
 import random
 from django.shortcuts import render
 from django.http import HttpResponse
-from viewer.models import Movie
+from django.views.generic import ListView
+from viewer.models import Movie, Actor
 
 
 def hello(request):
@@ -52,14 +53,16 @@ def home_page(request):
     return render(request, template_name='home.html', context=context)
 
 
-def movies_list(request):
-    movies = Movie.objects.all()
+class MoviesList(ListView):
+    template_name = 'movies.html'
+    model = Movie
+    context_object_name = 'movies'
 
-    context = {
-        'movies': movies,
-        'page_name': 'Movies List'
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    return render(request, template_name='movies.html', context=context)
+        context['page_name'] = 'Movies List'
+
+        return context
 
 
