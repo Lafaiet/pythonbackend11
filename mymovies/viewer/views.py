@@ -1,10 +1,11 @@
 import random
 from django.shortcuts import render
 from django.http import HttpResponse
+from viewer.models import Movie
 
 
 def hello(request):
-    content = 'Hello world! I am learning Django!'
+    content = '<b>Hello world! I am learning Django!</b>'
 
     return HttpResponse(content)
 
@@ -42,5 +43,23 @@ def pet_names(request, pet_type):
 
     return HttpResponse(content)
 
+
+def home_page(request):
+
+    context = {
+        'page_name': 'Home Page'
+    }
+    return render(request, template_name='home.html', context=context)
+
+
+def movies_list(request):
+    movies = Movie.objects.all()
+
+    context = {
+        'movies': movies,
+        'page_name': 'Movies List'
+    }
+
+    return render(request, template_name='movies.html', context=context)
 
 

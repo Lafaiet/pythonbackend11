@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <ul>
+
+      {% for m in movies %}
+       <li> {{m.title}} - {{m.release_year}} - {{m.rating | default_if_none:"*"}}</li>
+      {% endfor %}
+
+    </ul>
+{% endblock %}
+
+
+
+
