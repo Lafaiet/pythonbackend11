@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>{{movie.title}}</h3>
+
+<p><b>release_year:</b> {{movie.release_year}}</p>
+<p><b>duration:</b> {{movie.duration}}</p>
+<p><b>genre:</b> {{movie.genre}}</p>
+<p><b>rating:</b> {{movie.rating | default_if_none:"-"}}</p>
+<p><b>date_added:</b> {{movie.date_added | default_if_none:"-"}}</p>
+<p><b>director:</b> {{movie.director | default_if_none:"-"}}</p>
+<p><b>description:</b> {{movie.description}}</p>
+<p><b>actors:</b>
+
+    {% for a in movie.actors.all %}
+        {{a}} -
+    {% endfor %}
+
+</p>
+
+{% endblock%}
+

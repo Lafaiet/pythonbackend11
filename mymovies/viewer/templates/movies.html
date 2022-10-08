@@ -5,10 +5,14 @@
     <ul>
 
       {% for m in movies %}
-       <li> {{m.title}} - {{m.release_year}} - {{m.rating | default_if_none:"*"}}</li>
+        <li> <a href="{% url 'movie_detail' m.id %}">{{m.title}}</a> - {{m.release_year}} - {{m.rating | default_if_none:"*"}}</li>
       {% endfor %}
 
     </ul>
+
+
+    <a href="{% url 'create_movie'%}">Create Movie</a>
+
 {% endblock %}
 
 

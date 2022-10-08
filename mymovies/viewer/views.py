@@ -1,7 +1,8 @@
 import random
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.http import HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView
 from viewer.models import Movie, Actor
 
 
@@ -64,5 +65,21 @@ class MoviesList(ListView):
         context['page_name'] = 'Movies List'
 
         return context
+
+
+class MovieDetail(DetailView):
+    template_name = 'detail_movie.html'
+    model = Movie
+    context_object_name = 'movie'
+
+
+class MovieCreate(CreateView):
+    template_name = 'create_movie.html'
+    model = Movie
+    fields = '__all__'
+    success_url = reverse_lazy('movies_list')
+
+
+
 
 

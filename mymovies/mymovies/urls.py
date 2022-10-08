@@ -21,7 +21,9 @@ from viewer.views import (
     favorite_pet,
     pet_names,
     home_page,
-    MoviesList
+    MoviesList,
+    MovieDetail,
+    MovieCreate
 )
 
 
@@ -33,4 +35,6 @@ urlpatterns = [
     path('pet/', favorite_pet),
     path('pet_names/<pet_type>', pet_names),
     path('movies/', MoviesList.as_view(), name='movies_list'),
+    path('movies/<int:pk>', MovieDetail.as_view(), name='movie_detail'),
+    path('create_movie', MovieCreate.as_view(), name='create_movie'),
 ]

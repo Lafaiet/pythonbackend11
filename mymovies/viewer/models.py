@@ -38,6 +38,7 @@ class Movie(models.Model):
     director = models.ForeignKey(Director, on_delete=models.DO_NOTHING, null=True, blank=True)
     actors = models.ManyToManyField(Actor, blank=True)
 
+
     def __str__(self):
         return self.title
 
