@@ -2,7 +2,7 @@ import random
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from viewer.models import Movie, Actor
 
 
@@ -80,6 +80,16 @@ class MovieCreate(CreateView):
     success_url = reverse_lazy('movies_list')
 
 
+class MovieUpdate(UpdateView):
+    template_name = 'update_movie.html'
+    model = Movie
+    fields = '__all__'
+    success_url = reverse_lazy('movies_list')
 
 
+class MovieDelete(DeleteView):
+    template_name = 'delete_movie.html'
+    model = Movie
+    success_url = reverse_lazy('movies_list')
+    context_object_name = 'movie'
 

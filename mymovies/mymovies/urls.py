@@ -23,7 +23,9 @@ from viewer.views import (
     home_page,
     MoviesList,
     MovieDetail,
-    MovieCreate
+    MovieCreate,
+    MovieUpdate,
+    MovieDelete
 )
 
 
@@ -37,4 +39,6 @@ urlpatterns = [
     path('movies/', MoviesList.as_view(), name='movies_list'),
     path('movies/<int:pk>', MovieDetail.as_view(), name='movie_detail'),
     path('create_movie', MovieCreate.as_view(), name='create_movie'),
+    path('movies/<int:pk>/update', MovieUpdate.as_view(), name='movie_update'),
+    path('movies/<int:pk>/delete', MovieDelete.as_view(), name='movie_delete'),
 ]
