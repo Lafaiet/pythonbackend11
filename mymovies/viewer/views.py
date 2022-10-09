@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from viewer.models import Movie, Actor
 
 
@@ -84,24 +85,27 @@ class MovieDetail(DetailView):
     context_object_name = 'movie'
 
 
-class MovieCreate(CreateView):
+class MovieCreate(PermissionRequiredMixin, CreateView):
     template_name = 'create_movie.html'
     model = Movie
     fields = '__all__'
     success_url = reverse_lazy('movies_list')
+    permission_required = 'viewer.add_movie'
 
 
-class MovieUpdate(UpdateView):
+class MovieUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'update_movie.html'
     model = Movie
     fields = '__all__'
     success_url = reverse_lazy('movies_list')
+    permission_required = 'viewer.change_movie'
 
 
-class MovieDelete(DeleteView):
+class MovieDelete(PermissionRequiredMixin, DeleteView):
     template_name = 'delete_movie.html'
     model = Movie
     success_url = reverse_lazy('movies_list')
     context_object_name = 'movie'
+    permission_required = 'viewer.delete_movie'
 
 
