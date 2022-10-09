@@ -2,7 +2,7 @@ import random
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from viewer.models import Movie, Actor
 
 
@@ -54,6 +54,17 @@ def home_page(request):
     return render(request, template_name='home.html', context=context)
 
 
+class HomePage(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['page_name'] = 'Home Page'
+
+        return context
+
+
 class MoviesList(ListView):
     template_name = 'movies.html'
     model = Movie
@@ -92,4 +103,5 @@ class MovieDelete(DeleteView):
     model = Movie
     success_url = reverse_lazy('movies_list')
     context_object_name = 'movie'
+
 

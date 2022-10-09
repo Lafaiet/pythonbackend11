@@ -25,12 +25,13 @@ from viewer.views import (
     MovieDetail,
     MovieCreate,
     MovieUpdate,
-    MovieDelete
+    MovieDelete,
+    HomePage
 )
 
 
 urlpatterns = [
-    path('', home_page, name='home'),
+    path('', HomePage.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('hello/', hello),
     path('luck/', luck_number),
