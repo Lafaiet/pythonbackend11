@@ -93,6 +93,7 @@ class MovieCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'viewer.add_movie'
 
 
+
 class MovieUpdate(PermissionRequiredMixin, UpdateView):
     template_name = 'update_movie.html'
     model = Movie

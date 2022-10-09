@@ -11,7 +11,9 @@
     </ul>
 
 
-    <a href="{% url 'create_movie'%}">Create Movie</a>
+    {% if perms.viewer.add_movie %}
+        <a href="{% url 'create_movie'%}">Create Movie</a>
+    {% endif %}
 
 {% endblock %}
 
