@@ -13,7 +13,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from viewer.models import Movie, Actor
-from viewer.forms import ContactForm
+from viewer.forms import ContactForm, SignUpForm
 
 
 def hello(request):
@@ -129,5 +129,10 @@ class Contact(FormView):
 
         return super().form_valid(form)
 
+
+class SignUpView(CreateView):
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('home')
+    form_class = SignUpForm
 
 

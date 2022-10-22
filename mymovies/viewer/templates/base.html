@@ -39,7 +39,10 @@
       <div>Welcome {{ user.username }}</div>
         <a href="{%url  'logout'%}?next={%url 'login'%}"> logout </a>
       {% else %}
-        <a href="{%url  'login'%}"> login </a>
+        <ul>
+          <li><a href="{%url  'signup'%}"> signup </a></li>
+          <li><a href="{%url  'login'%}"> login </a></li>
+        </ul>
       {% endif %}
 
     </nav>

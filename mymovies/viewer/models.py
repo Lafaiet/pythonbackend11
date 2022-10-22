@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Music
 # User review ?
@@ -38,8 +39,17 @@ class Movie(models.Model):
     director = models.ForeignKey(Director, on_delete=models.DO_NOTHING, null=True, blank=True)
     actors = models.ManyToManyField(Actor, blank=True)
 
-
     def __str__(self):
         return self.title
 
-    # stars ?
+
+class Profile(models.Model):
+
+    intro = models.TextField(null=True, blank=True)
+    watch_list = models.ManyToManyField(Movie)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+
+    def __str__(self):
+        return self.user.username
+
+

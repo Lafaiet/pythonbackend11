@@ -27,7 +27,8 @@ from viewer.views import (
     MovieUpdate,
     MovieDelete,
     HomePage,
-    Contact
+    Contact,
+    SignUpView
 )
 
 
@@ -45,4 +46,5 @@ urlpatterns = [
     path('movies/<int:pk>/delete', MovieDelete.as_view(), name='movie_delete'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('contact/', Contact.as_view(), name='contact'),
+    path('signup/', SignUpView.as_view(), name='signup')
 ]
