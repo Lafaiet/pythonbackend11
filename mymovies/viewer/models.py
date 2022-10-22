@@ -38,6 +38,7 @@ class Movie(models.Model):
     date_added = models.DateTimeField(auto_now=True, null=True, blank=True)
     director = models.ForeignKey(Director, on_delete=models.DO_NOTHING, null=True, blank=True)
     actors = models.ManyToManyField(Actor, blank=True)
+    cover = models.ImageField(null=True, blank=True, upload_to='images/')
 
     def __str__(self):
         return self.title

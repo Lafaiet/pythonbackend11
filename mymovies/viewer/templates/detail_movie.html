@@ -3,6 +3,9 @@
 {% block content %}
 
 <h3>{{movie.title}}</h3>
+{% if movie.cover %}
+    <p> <img src="{{movie.cover.url}}" width="300" height="auto"> </p>
+{% endif %}
 
 <p><b>release_year:</b> {{movie.release_year}}</p>
 <p><b>duration:</b> {{movie.duration}}</p>
