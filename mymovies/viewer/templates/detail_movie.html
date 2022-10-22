@@ -5,6 +5,8 @@
 <h3>{{movie.title}}</h3>
 {% if movie.cover %}
     <p> <img src="{{movie.cover.url}}" width="300" height="auto"> </p>
+{% else %}
+    <p> <img src="https://dummyimage.com/200x300/000/fff&text=NO+COVER" width="300" height="auto"> </
 {% endif %}
 
 <p><b>release_year:</b> {{movie.release_year}}</p>
