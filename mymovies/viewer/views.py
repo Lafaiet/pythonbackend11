@@ -12,6 +12,7 @@ from django.views.generic import (
     FormView
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.db.models import Q
 from viewer.models import Movie, Actor
 from viewer.forms import ContactForm, SignUpForm
 
@@ -95,7 +96,9 @@ class MoviesList(ListView):
         if search is None:
             return movies
 
-        filtered_movies = movies.filter(title__contains=search)
+        filtered_movies = movies.filter(
+            Q(title__contains=search) | Q(description__contains=search) | Q(director__name__contains=search)
+        )
 
         return filtered_movies
 
